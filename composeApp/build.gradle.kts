@@ -45,6 +45,8 @@ kotlin {
             implementation(compose.components.resources)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.ktor.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
         }
@@ -126,10 +128,11 @@ buildConfig {
 
 sqldelight {
     databases {
-        create("MyDatabase") {
+        create("AppDatabase") {
             // Database configuration here.
             // https://cashapp.github.io/sqldelight
             packageName.set("org.company.app.db")
+            generateAsync.set(true)
         }
     }
 }
