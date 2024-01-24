@@ -1,9 +1,7 @@
 package org.company.app
 
-import java.awt.Desktop
-import java.net.URI
+import org.company.app.cache.DatabaseDriverFactory
 
-internal actual fun openUrl(url: String?) {
-    val uri = url?.let { URI.create(it) } ?: return
-    Desktop.getDesktop().browse(uri)
+internal actual fun provideDatabaseDriverFactory(): DatabaseDriverFactory {
+    return DatabaseDriverFactory()
 }

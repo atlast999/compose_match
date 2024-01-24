@@ -1,9 +1,7 @@
 package org.company.app
 
-import platform.Foundation.NSURL
-import platform.UIKit.UIApplication
+import org.company.app.cache.DatabaseDriverFactory
 
-internal actual fun openUrl(url: String?) {
-    val nsUrl = url?.let { NSURL.URLWithString(it) } ?: return
-    UIApplication.sharedApplication.openURL(nsUrl)
+internal actual fun provideDatabaseDriverFactory(): DatabaseDriverFactory {
+    return DatabaseDriverFactory()
 }
