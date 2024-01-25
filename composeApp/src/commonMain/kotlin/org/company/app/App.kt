@@ -8,13 +8,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import org.company.app.cache.DatabaseDriverFactory
 import org.company.app.presentation.LaunchUI
+import org.company.app.presentation.ScreenRoot
 import org.company.app.theme.AppTheme
 
 @Composable
 internal fun App() = AppTheme {
-    LaunchUI(
-        modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)
-    )
+//    LaunchUI(
+//        modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)
+//    )
+    ScreenRoot()
 }
 
 internal expect fun provideDatabaseDriverFactory(): DatabaseDriverFactory
