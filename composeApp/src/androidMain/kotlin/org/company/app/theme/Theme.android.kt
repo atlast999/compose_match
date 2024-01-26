@@ -13,7 +13,7 @@ internal actual fun SystemAppearance(isDark: Boolean) {
     val systemBarColor = Color.TRANSPARENT
     LaunchedEffect(isDark) {
         val window = (view.context as Activity).window
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.setDecorFitsSystemWindows(window, true) //whether view should fit whole screen (status bar)
         window.statusBarColor = systemBarColor
         window.navigationBarColor = systemBarColor
         WindowCompat.getInsetsController(window, window.decorView).apply {
