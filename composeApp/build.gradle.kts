@@ -53,7 +53,7 @@ kotlin {
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.screenModel)
             implementation(libs.voyager.transitions)
-            implementation(libs.voyager.koin)
+//            implementation(libs.voyager.koin) //this cause ios build to failed
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
         }

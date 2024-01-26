@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
+import org.company.app.di.getScreenModel
 import org.company.app.entity.RocketLaunch
 
 data class HomeScreen(private val username: String) : Screen {
