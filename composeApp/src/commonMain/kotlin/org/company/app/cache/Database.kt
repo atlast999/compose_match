@@ -5,7 +5,7 @@ import org.company.app.entity.Links
 import org.company.app.entity.Patch
 import org.company.app.entity.RocketLaunch
 
-internal class Database(databaseDriverFactory: DatabaseDriverFactory) {
+class Database(databaseDriverFactory: DatabaseDriverFactory) {
     private val database = AppDatabase(databaseDriverFactory.createDriver())
     private val dbQuery = database.appDatabaseQueries
 

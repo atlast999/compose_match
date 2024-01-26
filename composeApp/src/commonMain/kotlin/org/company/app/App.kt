@@ -1,7 +1,6 @@
 package org.company.app
 
 import androidx.compose.runtime.Composable
-import org.company.app.cache.DatabaseDriverFactory
 import org.company.app.presentation.ScreenRoot
 import org.company.app.theme.AppTheme
 
@@ -12,5 +11,3 @@ internal fun App() = AppTheme {
 //    )
     ScreenRoot()
 }
-
-internal expect fun provideDatabaseDriverFactory(): DatabaseDriverFactory

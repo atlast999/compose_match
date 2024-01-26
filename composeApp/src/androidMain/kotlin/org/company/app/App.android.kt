@@ -4,7 +4,6 @@ import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import org.company.app.cache.DatabaseDriverFactory
 
 class AndroidApp : Application() {
     companion object {
@@ -24,10 +23,4 @@ class AppActivity : ComponentActivity() {
             App()
         }
     }
-}
-
-internal actual fun provideDatabaseDriverFactory(): DatabaseDriverFactory {
-    return DatabaseDriverFactory(
-        context = AndroidApp.INSTANCE
-    )
 }
