@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import org.company.app.di.getScreenModel
-import org.company.app.presentation.home.HomeScreen
+import org.company.app.presentation.chat.ChatScreen
 
 object LoginScreen : Screen {
 
@@ -27,9 +27,10 @@ object LoginScreen : Screen {
             username = screenState.username,
             onUsernameChanged = viewModel::onUsernameChanged,
             onLoginClicked = {
-                navigator.push(HomeScreen(
-                    username = screenState.username
-                ))
+//                navigator.push(HomeScreen(
+//                    username = screenState.username
+//                ))
+                navigator.push(ChatScreen)
             }
         )
     }

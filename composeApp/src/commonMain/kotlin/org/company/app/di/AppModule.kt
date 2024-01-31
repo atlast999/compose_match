@@ -20,6 +20,7 @@ import kotlinx.serialization.json.Json
 import org.company.app.cache.Database
 import org.company.app.network.SpaceXApi
 import org.company.app.presentation.authentication.login.LoginScreenModel
+import org.company.app.presentation.chat.ChatScreenModel
 import org.company.app.presentation.home.HomeScreenModel
 import org.koin.dsl.module
 
@@ -87,6 +88,10 @@ val viewModelModule = module {
         spaceXApi = get(),
         database = get(),
     ) }
+
+    factory {
+        ChatScreenModel(spaceXApi = get())
+    }
 }
 
 internal fun appModules() = listOf(
