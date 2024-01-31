@@ -18,9 +18,12 @@ import io.ktor.serialization.kotlinx.KotlinxWebsocketSerializationConverter
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.company.app.cache.Database
+import org.company.app.data.repository.FakeChatRepositoryImpl
+import org.company.app.domain.repository.ChatRepository
 import org.company.app.network.SpaceXApi
 import org.company.app.presentation.authentication.login.LoginScreenModel
 import org.company.app.presentation.chat.ChatScreenModel
+import org.company.app.presentation.chat.room.ChatRoomScreenModel
 import org.company.app.presentation.home.HomeScreenModel
 import org.koin.dsl.module
 
@@ -82,15 +85,26 @@ val databaseModule = module {
     }
 }
 
+val repositoryModule = module {
+    single<ChatRepository> {
+        FakeChatRepositoryImpl()
+    }
+}
+
 val viewModelModule = module {
     factory { LoginScreenModel() }
-    factory { HomeScreenModel(
-        spaceXApi = get(),
-        database = get(),
-    ) }
+    factory {
+        HomeScreenModel(
+            spaceXApi = get(),
+            database = get(),
+        )
+    }
 
     factory {
         ChatScreenModel(spaceXApi = get())
+    }
+    factory {
+        ChatRoomScreenModel(chatRepository = get())
     }
 }
 
@@ -98,5 +112,6 @@ internal fun appModules() = listOf(
     platformModule,
     apiModule,
     databaseModule,
+    repositoryModule,
     viewModelModule,
 )

@@ -11,13 +11,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import org.company.app.di.getScreenModel
+import org.company.app.presentation.AppScreen
 import org.company.app.presentation.ScreenWrapper
 import org.company.app.presentation.chat.room.ChatRoomScreen
 
-object LoginScreen : Screen {
+object LoginScreen : AppScreen() {
 
     @Composable
     override fun Content() {

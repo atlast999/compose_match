@@ -3,6 +3,7 @@ package org.company.app.presentation
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -13,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.SlideTransition
@@ -26,6 +28,7 @@ abstract class AppScreen : Screen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ScreenWrapper(
+    isLoading: Boolean = false,
     title: String = "",
     navigationAction: () -> Unit = {},
     navigationIcon: @Composable () -> Unit = {
@@ -34,6 +37,7 @@ internal fun ScreenWrapper(
             contentDescription = null,
         )
     },
+    actions: @Composable RowScope.() -> Unit = {},
     content: @Composable BoxScope.() -> Unit,
 ) {
     LaunchedEffect(key1 = true) {
@@ -55,14 +59,20 @@ internal fun ScreenWrapper(
                         navigationIcon.invoke()
                     }
                 },
+                actions = actions,
             )
         },
         content = {
             Box(
-                modifier = Modifier.fillMaxSize().padding(it),
+                modifier = Modifier.fillMaxSize().padding(it).padding(10.dp),
                 contentAlignment = Alignment.Center,
-                content = content,
-            )
+            ) {
+                if (isLoading) {
+                    CircularProgressIndicator()
+                } else {
+                    content.invoke(this)
+                }
+            }
         },
     )
 }
