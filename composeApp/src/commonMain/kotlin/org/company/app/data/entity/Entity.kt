@@ -1,4 +1,4 @@
-package org.company.app.entity
+package org.company.app.data.entity
 
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant

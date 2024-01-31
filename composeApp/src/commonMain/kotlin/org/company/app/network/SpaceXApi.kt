@@ -7,7 +7,7 @@ import io.ktor.client.plugins.websocket.webSocketSession
 import io.ktor.client.request.get
 import io.ktor.client.request.post
 import io.ktor.http.HttpMethod
-import org.company.app.entity.RocketLaunch
+import org.company.app.data.entity.RocketLaunch
 
 class SpaceXApi(
     private val httpClient: HttpClient,

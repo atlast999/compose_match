@@ -1,9 +1,9 @@
 package org.company.app.cache
 
+import org.company.app.data.entity.Links
+import org.company.app.data.entity.Patch
+import org.company.app.data.entity.RocketLaunch
 import org.company.app.db.AppDatabase
-import org.company.app.entity.Links
-import org.company.app.entity.Patch
-import org.company.app.entity.RocketLaunch
 
 class Database(databaseDriverFactory: DatabaseDriverFactory) {
     private val database = AppDatabase(databaseDriverFactory.createDriver())

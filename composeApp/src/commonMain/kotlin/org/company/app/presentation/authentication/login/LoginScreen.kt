@@ -14,7 +14,8 @@ import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import org.company.app.di.getScreenModel
-import org.company.app.presentation.chat.ChatScreen
+import org.company.app.presentation.ScreenWrapper
+import org.company.app.presentation.chat.room.ChatRoomScreen
 
 object LoginScreen : Screen {
 
@@ -23,16 +24,21 @@ object LoginScreen : Screen {
         val navigator = LocalNavigator.current ?: return
         val viewModel = getScreenModel<LoginScreenModel>()
         val screenState by viewModel.state.collectAsState()
-        LoginUI(
-            username = screenState.username,
-            onUsernameChanged = viewModel::onUsernameChanged,
-            onLoginClicked = {
+        ScreenWrapper(
+            title = "Login",
+            navigationIcon = {},
+        ) {
+            LoginUI(
+                username = screenState.username,
+                onUsernameChanged = viewModel::onUsernameChanged,
+                onLoginClicked = {
 //                navigator.push(HomeScreen(
 //                    username = screenState.username
 //                ))
-                navigator.push(ChatScreen)
-            }
-        )
+                    navigator.push(ChatRoomScreen)
+                }
+            )
+        }
     }
 
     @Composable

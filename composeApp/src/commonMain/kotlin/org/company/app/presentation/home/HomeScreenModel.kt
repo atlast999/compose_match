@@ -5,7 +5,7 @@ import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.company.app.cache.Database
-import org.company.app.entity.RocketLaunch
+import org.company.app.data.entity.RocketLaunch
 import org.company.app.network.SpaceXApi
 
 class HomeScreenModel(
