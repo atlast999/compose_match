@@ -1,6 +1,5 @@
 package org.company.app.di
 
-import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpRequestRetry
@@ -70,7 +69,7 @@ val apiModule = module {
             install(WebSockets) {
                 contentConverter = KotlinxWebsocketSerializationConverter(Json)
             }
-        }.also { Napier.base(DebugAntilog()) }
+        }
     }
     single {
         SpaceXApi(httpClient = get())
@@ -101,7 +100,7 @@ val viewModelModule = module {
     }
 
     factory {
-        ChatScreenModel(spaceXApi = get())
+        ChatScreenModel(chatRepository = get())
     }
     factory {
         ChatRoomScreenModel(chatRepository = get())

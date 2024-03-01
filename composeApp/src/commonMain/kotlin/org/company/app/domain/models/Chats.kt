@@ -11,3 +11,8 @@ data class ChatMember(
     val id: Long,
     val name: String,
 )
+
+data class ChatMessage(
+    val owner: ChatMember,
+    val content: String,
+)

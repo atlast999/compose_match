@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,10 +19,12 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.transitions.SlideTransition
+import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 import org.company.app.di.appModules
 import org.company.app.presentation.authentication.login.LoginScreen
 import org.koin.compose.KoinApplication
+import org.koin.core.context.stopKoin
 
 abstract class AppScreen : Screen
 
@@ -84,6 +87,13 @@ internal fun ScreenRoot() {
             modules(appModules())
         }
     ) {
+        DisposableEffect(true) {
+            Napier.base(DebugAntilog(defaultTag = "CMPapp"))
+            onDispose {
+                Napier.d("Stopping koin application")
+                stopKoin()
+            }
+        }
         Navigator(LoginScreen) { navigator ->
             SlideTransition(navigator = navigator)
         }
